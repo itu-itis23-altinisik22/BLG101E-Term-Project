@@ -41,6 +41,15 @@
             z-index: 2;
             display: none;
         }
+
+        #congrats {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            display: none;
+        }
     </style>
 
 </head>
@@ -72,11 +81,16 @@
 
     <br>
 
+    <img id="congrats" style="display: none; margin-top: 220px; " src="congrats.png" alt="congratulations image">
+    <img id="gameover" style="display: none; margin-top: 220px;" src="gameover.png" alt="congratulations image">
+
     <script>
 
         var points = 0
         var clicked = 0
         var started = false
+        var congrats = document.getElementById("congrats")
+        var gameover = document.getElementById("gameover")
 
         var letterContainer = document.querySelector(".letterContainer");
         var letterButtons = letterContainer.querySelectorAll("button");
@@ -97,8 +111,13 @@
             element.style.visibility = "hidden";
             points+=20
 
-        var pointsDisplay = document.getElementById("pointsDisplay");
-        pointsDisplay.textContent = "Points: " + points;
+            if(points===100){
+            started=false;
+            congrats.style.display ="block";
+            }
+
+            var pointsDisplay = document.getElementById("pointsDisplay");
+            pointsDisplay.textContent = "Points: " + points;
 
         }
 
@@ -112,6 +131,10 @@
                         HideLetter(element)
                         clicked+=1
                     }
+                    else{
+                        gameOver()
+
+                    }
                 }             
             }            
 
@@ -120,6 +143,8 @@
         function Restart(){
             location.reload();
             started = false       
+            congrats.style.display = "none"
+            gameover.style.display="none"
 
         }
 
@@ -135,17 +160,9 @@
 
 
         function gameOver(){
-            const body = document.body
-            const gameoverimage = document.getElementById("gameover")
+            started = false;
+            gameover.style.display ="block"
 
-            if (body.style.filter === 'blur(5px)') {
-                body.style.backdropFilter = 'none'; // Bulanıklığı kaldır
-                gameoverimage.style.display = "none"
-            } 
-            else {
-                body.style.backdropFilter = 'blur(5px)'; // 5 piksel bulanıklık ekle
-                gameoverimage.style.display = "block"
-            }
         }
 
         function PlayGame(){
