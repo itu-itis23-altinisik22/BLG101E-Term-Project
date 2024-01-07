@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="eng">
-
+    
 <head>
     <title> Term Project </title>
     <link rel = "stylesheet" type = "text/css"/>
@@ -56,8 +56,6 @@
 
 <body id="button" onload="document.body.style.backgroundColor = 'linen' ">
     <br>
-
-
     <div class="rest">
 
         <div class="letterContainer">
@@ -82,7 +80,7 @@
     <br>
 
     <img id="congrats" style="display: none; margin-top: 220px; " src="congrats.png" alt="congratulations image">
-    <img id="gameover" style="display: none; margin-top: 220px;" src="gameover.png" alt="congratulations image">
+    <img id="gameover" style="display: none; margin-top: 220px;" src="gameover.png" alt="gameover image">
 
     <script>
 
@@ -102,10 +100,8 @@
             }
             started = true
             for (var i = document.querySelector(".letterContainer"); i>0;i--){
-
             }
         }
-
         function HideLetter(element){
             //var element = document.getElementById(id);
             element.style.visibility = "hidden";
@@ -118,15 +114,11 @@
 
             var pointsDisplay = document.getElementById("pointsDisplay");
             pointsDisplay.textContent = "Points: " + points;
-
         }
-
         function CheckLetter(element, letter){
-
             if(started){
                 if(!element.classList.contains("clicked")){
                     var ExpectedLetter = getExpectedLetter();
-
                     if(letter==ExpectedLetter){
                         HideLetter(element)
                         clicked+=1
@@ -137,17 +129,13 @@
                     }
                 }             
             }            
-
         }
-
         function Restart(){
             location.reload();
             started = false       
             congrats.style.display = "none"
             gameover.style.display="none"
-
         }
-
         function getExpectedLetter() {
         switch (clicked) {
         case 1: return 'S';
@@ -157,8 +145,6 @@
         default: return '';
         }
         }
-
-
         function gameOver(){
             started = false;
             gameover.style.display ="block"
@@ -181,10 +167,6 @@
 
         }
         
-
-
-
-
     </script>
 
 
