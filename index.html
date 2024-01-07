@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="eng">
+
+<head>
+
+    <link rel = "stylesheet" type = "text/css" href = "mainpagecss.css" />
+
+    <title> Term Project </title>
+
+    <!--<h1 style="color:black;
+               background-color: aqua;
+               border:3px solid black;
+               padding: 5px;
+               font-family: courier;
+               font-size: 160%;
+               margin: 50px;">
+        Işıl Altınışık</h1>-->
+
+
+    <div>
+      <img id="itulogo" src="itulogo.png" alt="İTÜ LOGO" width="133,25" height="81,25" style="margin-left: 30px; margin-top: 5px;">
+          
+      <button onclick="ChangeMode()" style="background-color: transparent; float:right; margin-right: 20px; margin-top: 5px; border: 0cap;"> <img src="darkmode.png" id="modeswitcher"
+         alt="Dark Mode Button" width="180" height="85,875"> </button>
+      
+      
+    </div>
+
+
+
+
+
+</head>
+
+<body onload="document.body.style.backgroundColor = 'black'">
+
+  
+
+   <!--
+     kdfvnmkldsnlk
+     
+    Write your comments here -->
+    
+
+
+    <!-- <a href="https://www.ferrari.com/en-TR" target="_blank" title="Ferrari"> <img src="f.jfif" alt="ferrari" width="750" height="500"></a> <br> 
+    <a href="https://www.w3schools.com/colors/colors_names.asp" target="_blank">These are the colors you can use</a> 
+
+    <br> <a href="html_images.asp" style="text-decoration:none;">HTML Images</a>  to remove the under line in links-->
+    <br>
+    <a href="#ai" class="down" style="text-decoration: none; color: seagreen; margin-left: 15px;"> See the Academic Interests</button>
+
+    <img src="ben.jpg" alt="My Photo" style="float:right; margin-top: 40px; margin-right: 55px;" width="450" height="450">
+
+    <div>
+
+      <h1 style="color:burlywood; margin-left: 15px;
+                font-size: 400%;"> Who Am I ?</h1>
+      <p style="color:white;
+                font-family: 'Courier'; font-size: 150%; margin-left: 15px; " id="bio">
+        Işıl Altınışık <br>
+        Birthday : 22.04.2004 <br>
+        High School : Capa Science High School <br>
+        University : Istanbul Technical University <br>
+        Faculty : Computer and Informatics Faculty <br>
+        Department : Artificial Intelligence and Data Engineering <br>
+        Student NO : 150220308 
+
+      </p>
+    </div>
+
+    <button onclick="document.location='memorygamepage.html'" style="background-color: black; margin-left: 15px;" id="playgame" width="400" height="300"> <img src="gotogamebutton.png" width="250" height="120">   </button>
+
+
+    <div id="ai">
+
+      <br><br>
+      <h1 style="color:goldenrod; margin-left: 30px;"> Academic Interests</h1>
+      <br>
+      <p style="font-size: 160%; color:white; font-family: 'Times New Roman' ; padding-left: 30px; padding-right: 30px; align-content: center;" id="text">
+        Hello, I'm Işıl, and I'm currently a student at ITU. <br>My journey into the 
+        world of computer science began in high school when I was introduced to 
+        Python. Python became the very first programming language I learned, and 
+        over time, it began to play a significant role in my life.
+        During high school, Python was my primary companion, and I was 
+        continually discovering it. 
+       <br>
+       <br>
+
+        As for my future plans, I must confess that I have not thought about a 
+        clear career path. However, I have some predictions. I'm considering two 
+        different paths that get my interest.
+        <br>
+        <br>
+        Firstly, I have a passion for game development. I had the opportunity to 
+        work for a game company during the summer 2023, gaining valuable experience in 
+        this field. The gaming sector is increasingly incorporating AI, like any
+        other field, and I am excited about contributing to this field.
+        On the other hand, I also can see myself as a data scientist in the 
+        electric car industry. While the specifics are not clear yet, this is 
+        another path that I find interesting. I am aware that my interests may 
+        evolve over time, and I am open to exploring various sectors.</p>
+    </div>
+
+    <script>
+      var biotext = document.getElementById("bio")
+      var switchelement = document.getElementById("modeswitcher")
+      var imgelement = document.getElementById("itulogo")
+      var text = document.getElementById("text")
+      var playgame = document.getElementById("playgame")
+
+
+      function ChangeMode(){
+
+        if(document.body.style.backgroundColor=="black"){
+          document.body.style.backgroundColor="white"
+          imgelement.src = "itudark.png"
+          switchelement.src = "lightmode.png"
+          biotext.style.color = "black"
+          text.style.color = "black"
+          playgame.style.backgroundColor = "white"
+
+        }
+
+        else if(document.body.style.backgroundColor=="white"){
+          document.body.style.backgroundColor="black"
+          imgelement.src = "itulogo.png"
+          switchelement.src = "darkmode.png"
+          biotext.style.color = "white"
+          text.style.color = "white"
+          playgame.style.backgroundColor = "black"
+
+        }
+
+          
+
+      }
+
+      
+
+
+    </script>
+
+
+</body>
+
+<style>
+  body{ 
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+
+</html>
