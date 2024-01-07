@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <title> Term Project </title>
+    <link rel = "stylesheet" type = "text/css"/>
+    <style>
+        .rest {
+                display: flex;
+            justify-content: space-between; /* Sağa ve sola hizala */
+            align-items: center; /* Dikey hizala */
+            margin-top: 100px;
+            margin-right: 20px; /* Sağdan boşluk ayarla */
+            margin-left: 20px; /* Soldan boşluk ayarla */
+        }
+        .letterContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 100px;
+            margin-left: 0px;
+            margin-right: 200px;
+        }
+
+        .letterContainer button {
+            margin: 5px; /* İstenilen boşluk miktarını ayarlayabilirsiniz */
+            background: transparent;
+            border: 0;
+        }
+
+        #pointsDisplay {
+            text-align: center;
+        }
+
+        #gameover {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body id="button" onload="document.body.style.backgroundColor = 'linen' ">
+    <br>
+
+
+    <div class="rest">
+
+        <div class="letterContainer">
+            <button onclick="CheckLetter(this, 'I')" style="background: transparent; border:0cap"><img src="letteri.png" width="150" height="150" title="wow" id="I"></button>
+            <button onclick="CheckLetter(this,'S')" style="background: transparent; border:0cap"><img src="letters.png" width="150" height="150" title="wow" id="S"></button> 
+            <button onclick="CheckLetter(this, 'I')" style="background: transparent; border:0cap"><img src="letteri.png" width="150" height="150" title="wow" id="I"></button> 
+            <button onclick="CheckLetter(this, 'L')" style="background: transparent; border:0cap"><img src="letterl.png" width="150" height="150" title="wow" id="L"></button>
+            <button onclick="CheckLetter(this, '3')" style="background: transparent; border:0cap"><img src="letter3.png" width="150" height="150" title="wow" id="3"></button>
+        </div>
+
+        <button onclick="PlayGame()" >Play Game</button>
+        <br><br><br>
+        <button onclick="Restart()" >Restart</button>
+
+        <p id="pointsDisplay">Points: 0</p>
+    </div>
+
+    <div id="notification" style="visibility:hidden;">
+        Game will start in <span id="countdown">2</span> seconds...
+    </div>
+
+    <br>
+
+    <script>
+
+        var points = 0
+        var clicked = 0
+        var started = false
+
+        var letterContainer = document.querySelector(".letterContainer");
+        var letterButtons = letterContainer.querySelectorAll("button");
+
+        function ShuffleLetters(){         
+            var letters = document.querySelector(".letterContainer")
+            for (var i = letters.children.length; i >= 0; i--) {
+                letters.appendChild(letters.children[Math.random() * i | 0]);
+            }
+            started = true
+            for (var i = document.querySelector(".letterContainer"); i>0;i--){
+
+            }
+        }
+
+        function HideLetter(element){
+            //var element = document.getElementById(id);
+            element.style.visibility = "hidden";
+            points+=20
+
+        var pointsDisplay = document.getElementById("pointsDisplay");
+        pointsDisplay.textContent = "Points: " + points;
+
+        }
+
+        function CheckLetter(element, letter){
+
+            if(started){
+                if(!element.classList.contains("clicked")){
+                    var ExpectedLetter = getExpectedLetter();
+
+                    if(letter==ExpectedLetter){
+                        HideLetter(element)
+                        clicked+=1
+                    }
+                }             
+            }            
+
+        }
+
+        function Restart(){
+            location.reload();
+            started = false       
+
+        }
+
+        function getExpectedLetter() {
+        switch (clicked) {
+        case 1: return 'S';
+        case 3: return 'L';
+        case 0: case 2: return 'I';
+        case 4: return '3';
+        default: return '';
+        }
+        }
+
+
+        function gameOver(){
+            const body = document.body
+            const gameoverimage = document.getElementById("gameover")
+
+            if (body.style.filter === 'blur(5px)') {
+                body.style.backdropFilter = 'none'; // Bulanıklığı kaldır
+                gameoverimage.style.display = "none"
+            } 
+            else {
+                body.style.backdropFilter = 'blur(5px)'; // 5 piksel bulanıklık ekle
+                gameoverimage.style.display = "block"
+            }
+        }
+
+        function PlayGame(){
+            ShuffleLetters()
+            const myTimeout = setTimeout(flip, 2000);
+        }
+
+        function flip(){
+            var buttons = document.querySelectorAll(".letterContainer button");
+
+            buttons.forEach(function (button) {
+                var id = button.getAttribute("data-id");
+                button.style.background = "black";
+                button.querySelector("img").style.visibility = "hidden";
+            });
+
+        }
+        
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
